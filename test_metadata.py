@@ -1,7 +1,9 @@
-try:
-    from importlib.metadata import metadata  # type: ignore  # https://github.com/python/mypy/issues/1393
-except ImportError:
-    from importlib_metadata import metadata  # type: ignore  # https://github.com/python/mypy/issues/1153
+import sys
 
-mypy_metadata = metadata('mypy')
-print(mypy_metadata['version'])
+if sys.version_info[:2] >= (3, 8):
+    import importlib.metadata as importlib_metadata
+else:
+    import importlib_metadata
+
+metadata = importlib_metadata.metadata('mypy')
+print(metadata['version'])
