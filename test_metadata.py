@@ -1,9 +1,9 @@
 import sys
 
 if sys.version_info[:2] >= (3, 8):
-    from importlib.metadata import metadata
+    import importlib.metadata as metadata
 else:
-    from importlib_metadata import metadata
+    import importlib_metadata as metadata
 
-mypy_metadata = metadata('mypy')
+mypy_metadata = metadata.metadata('mypy')
 print(mypy_metadata['version'])
